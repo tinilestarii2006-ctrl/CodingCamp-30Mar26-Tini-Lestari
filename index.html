@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense &amp; Budget Visualizer</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Expense &amp; Budget Visualizer</h1>
+      <div id="balance-display">Total Spent: $0.00</div>
+    </header>
+
+    <main>
+      <!-- Left column: form -->
+      <section id="form-section">
+        <h2>Add Transaction</h2>
+        <form id="transaction-form">
+          <label for="item-name">Item Name</label>
+          <input id="item-name" type="text" placeholder="e.g. Lunch" autocomplete="off" />
+          <span id="error-name" class="error"></span>
+
+          <label for="item-amount">Amount</label>
+          <input id="item-amount" type="number" placeholder="0.00" min="0.01" step="0.01" />
+          <span id="error-amount" class="error"></span>
+
+          <label for="item-category">Category</label>
+          <select id="item-category">
+            <option value="">Select category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Fun">Fun</option>
+          </select>
+          <span id="error-category" class="error"></span>
+
+          <button type="submit">Add Transaction</button>
+        </form>
+        <div id="limit-controls">
+          <label for="spending-limit">Spending Limit ($)</label>
+          <input id="spending-limit" type="number" placeholder="e.g. 200" min="0.01" step="0.01" />
+          <button id="set-limit-btn" type="button">Set Limit</button>
+          <span id="limit-status"></span>
+        </div>
+      </section>
+
+      <!-- Right column: chart -->
+      <section id="chart-section">
+        <h2>Spending by Category</h2>
+        <div id="chart-container">
+          <canvas id="spending-chart" style="display:none"></canvas>
+          <p id="chart-empty-state">No transactions yet. Add one to see your spending chart.</p>
+        </div>
+      </section>
+
+      <!-- Full-width bottom: transaction list -->
+      <section id="list-section">
+        <h2>Transactions</h2>
+        <ul id="transaction-list"></ul>
+      </section>
+
+      <!-- Full-width: monthly summary -->
+      <section id="summary-section">
+        <div id="summary-header">
+          <h2>Monthly Summary</h2>
+          <div id="summary-nav">
+            <button id="summary-prev" aria-label="Previous month">&#8249;</button>
+            <span id="summary-month-label"></span>
+            <button id="summary-next" aria-label="Next month">&#8250;</button>
+          </div>
+        </div>
+        <div id="monthly-summary-content">
+          <p id="summary-empty-state">No transactions for this month.</p>
+        </div>
+      </section>
+    </main>select id="sort-select">
+            <option value="none">Default</option>
+            <option value="amount-asc">Amount: Low to High</option>
+            <option value="amount-desc">Amount: High to Low</option>
+            <option value="category-az">Category: A–Z</option>
+          </select>
+        </div>
+        <ul id="transaction-list"></ul>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
